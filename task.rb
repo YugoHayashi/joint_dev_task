@@ -156,10 +156,10 @@ end
 class UserQ17
   # 以下に回答を記載
 
-  def initialize(name:, age:, gender:)
-    @name = name
-    @age = age
-    @gender = gender
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+    @gender = params[:gender]
   end
 
   def info
@@ -210,9 +210,10 @@ end
 
 class Item
   # 以下を修正して下さい
+  attr_accessor :name
 
-  def initialize(name)
-    @name = name
+  def initialize(**params)
+    @name = params[:name]
   end
 end
 
@@ -224,12 +225,36 @@ end
 
 class UserQ20
   # 以下に回答を記載
+  attr_accessor :name,:age
 
+  def initialize(**params)
+    @name = params[:name]
+    @age = params[:age]
+  end
 end
 
 class Zoo
   # 以下に回答を記載
+  def initialize(**params)
+    @infant = params[:entry_fee][:infant]
+    @children = params[:entry_fee][:children]
+    @adult = params[:entry_fee][:adult]
+    @senior = params[:entry_fee][:senior]
+  end
 
+  def info_entry_fee(user)
+    price = case user.age
+    when 0...5
+      @infant
+    when 6...12
+      @children
+    when 13...64
+      @adult
+    else
+      @senior
+    end
+    puts "#{user.name}さんの入場料金は#{price}円です。"
+  end
 end
 
 
