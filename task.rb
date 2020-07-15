@@ -210,7 +210,7 @@ end
 
 class Item
   # 以下を修正して下さい
-  attr_accessor :name
+  attr_reader :name
 
   def initialize(**params)
     @name = params[:name]
@@ -225,7 +225,7 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_accessor :name,:age
+  attr_reader :name,:age
 
   def initialize(**params)
     @name = params[:name]
